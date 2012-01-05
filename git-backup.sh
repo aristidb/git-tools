@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Thanks to Scott Chacon for the presentation at FROSCON explaining how to do this.
+
 BACKUP_BRANCH=refs/heads/backup
 BACKUP_MESSAGE=Backup
 TMPDIR=$(mktemp -d /tmp/git-backup-XXXX)
