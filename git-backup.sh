@@ -17,14 +17,15 @@ echo lc:$LAST_COMMIT lt:$LAST_TREE nt:$NEXT_TREE
 
 if [ $LAST_TREE!=$NEXT_TREE ]
 then
-    if [ $LC!= ]
+    if [ $LAST_COMMIT!= ]
     then
-        echo Write first commit
-        CSHA=$(echo $BACKUP_MESSAGE | git commit-tree $NEXT_TREE)
-    else
         echo Write commit
-        CSHA=$(echo $BACKUP_MESSAGE | git commit-tree -p $LAST_COMMIT $NEXT_TREE)
+        CSHA=$(echo $BACKUP_MESSAGE | git commit-tree $NEXT_TREE -p $LAST_COMMIT)
+    else
+        echo Initial commit
+        CSHA=$(echo $BACKUP_MESSAGE | git commit-tree $NEXT_TREE)
     fi
+
     echo Update branch $BACKUP_BRANCH
     git update-ref $BACKUP_BRANCH $CSHA
 fi
