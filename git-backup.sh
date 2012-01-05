@@ -19,7 +19,7 @@ echo lc:$LAST_COMMIT. lt:$LAST_TREE. nt:$NEXT_TREE.
 
 if [ $LAST_TREE != $NEXT_TREE ]
 then
-    if [ $LAST_COMMIT != ]
+    if [ $LAST_COMMIT != "" ]
     then
         echo Write commit
         CSHA=$(echo $BACKUP_MESSAGE | git commit-tree $NEXT_TREE -p $LAST_COMMIT)
